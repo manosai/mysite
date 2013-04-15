@@ -1,0 +1,269 @@
+
+<!Doctype HTML>
+<html>
+<head>
+	<title>Manosai Eerabathini</title>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="style.css"> </link>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+<!-- Add jQuery library -->
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+
+
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.fancybox.css" media="screen" />
+
+<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+
+
+</head>
+
+<body>
+	<div id = "strip">
+		
+	</div>
+
+	<h1>Manosai Eerabathini</h1>
+	<h2> Student, coder, reader, movie-watcher, cricketer </h2>
+	
+    <div id="nav">
+	<ul>
+		<li><a href="#aboutme" class = "fancybox">About Me</a></li>
+      	<li><a href= "#projects" class = "fancybox">Projects</a></li>
+      	<li><a href = "#inline1" class = "fancybox">Contact</a></li>
+	</ul>
+	</div>
+
+	<div id="aboutme" style="width:700px; height: 600px; display: none; background:black">
+		<header>About M.E.</header>
+		<img src="images/manosai.jpg" alt="Manosai Eerabathini" height="275" width="200">
+
+
+		<p>I am a current sophomore in the <a href="http://mkse.upenn.edu"><em>Networked and Social Systems Engineering Program</em></a> at the University of Pennsylvania. My interests in startups lie heavily in the areas of enterprise technology and big data/analytics. In the past, I have interned at Cube (YC W12), StorSimple (acquired by Microsoft), and NetApp. I'm looking to develop my career in tech by exploring exciting opportunities in the capacity of a product management/software development intern. Feel free to have a look at my resume. </p>
+		<div class = "social">
+			<a href= "manosairesume.pdf">
+    			<img alt = "resume" src= "images/resume.png" target="_blank"/>
+			</a>
+		</div>
+	</div>
+
+	<div id="projects" style="width:700px; height: 600px; display: none; background:black">
+		<header>My Projects</header> <br>
+		<header1> TrollSpice - PennApps Fall 2012 </header1> <br> <br> <br>
+		<iframe width="400" height="245" src="http://www.youtube.com/embed/aPf5Zu2QWr4" frameborder="0" allowfullscreen></iframe>
+
+			<p>TrollSpice was a hardware hack for PennApps Fall 2012 that won Best Life Sciences/Healthcare App. Using Arduino,
+			we hooked up sensors to the human body to interpret muscle contraction as input for various software programs. The aim was
+			to demonstrate the potential for alternative input to be used for physical therapy, communication with the disabled, or 
+			to provide deeper insight into personal fitness. Built over the course of 48 hours.  </p>
+	</div>
+
+	<div id="inline1" style="width:500px; height: 135px; display: none; background:black">
+		<header>You can find me on the following:</header>
+		<br>
+			<div class = "social">
+				<a href= "http://www.linkedin.com/pub/manosai-eerabathini/31/a10/545"/>
+   					<img alt = "linkedin" src= "images/linkedin.png" target="_blank"/>
+				</a>
+				<a href= "http://www.twitter.com/manosaie">
+    				<img alt = "twitter" src= "images/Twitter.png" target="_blank"/>
+				</a>
+				<a href= "http://www.facebook.com/manosaie">
+    				<img alt = "facebook" src= "images/facebook.png" target="_blank"/>
+				</a>
+				<a href= "http://www.github.com/manosaie">
+    				<img alt = "github" src= "images/GithubLogo.png" target="_blank"/>
+				</a>
+				<a href= "http://www.quora.com/Manosai-Eerabathini">
+    				<img alt = "quora" src= "images/quora.png" target="_blank"/>
+				</a>
+				<a href= "mailto:mano.eerabathini@gmail.com">
+    				<img alt = "gmail" src= "images/GmailLogo.png" target="_blank"/>
+				</a>
+			</div>
+	</div>
+</body>
+</html>
